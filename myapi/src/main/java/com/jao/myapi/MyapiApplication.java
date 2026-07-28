@@ -15,17 +15,22 @@ public class MyapiApplication implements CommandLineRunner{
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(MyapiApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
+		
+		if (usuarioRepository.count() == 0) {
 
-		Usuario u1 = new Usuario(null, "João", "joao", "123");
-		Usuario u2 = new Usuario(null, "Victor", "victor", "234");
+			Usuario u1 = new Usuario(null, "João Sousa", "joao", "123");
+			Usuario u2 = new Usuario(null, "Michael Jackson", "michael", "123");
 	
-		usuarioRepository.saveAll(Arrays.asList(u1, u2));
+			usuarioRepository.saveAll(Arrays.asList(u1, u2));
+			
+		}
 	}
 
 }
